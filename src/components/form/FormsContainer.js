@@ -19,6 +19,11 @@ const Forms = styled.div`
   height: auto;
   padding-bottom: 1rem;
 
+  @media (max-width:750px) {
+    width: 90%;
+    margin-bottom: 10px;
+  }
+
 `;
 
 const ErrorWarning = styled.div`
@@ -32,6 +37,7 @@ const ErrorWarning = styled.div`
   font-weight: 900;
   border-radius: 5px;
   margin-top: 10px;
+  font-size: 18px;
 
   p {
     text-align: center;
@@ -68,13 +74,15 @@ const Button = styled.button`
   box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
   outline-color: rgba(255, 255, 255, 0);
   outline-offset: 15px;
-  text-shadow: 1px 1px 2px #427388; 
+  text-shadow: 1px 1px 2px #427388;
+  
+  
 } 
 `;
 
 export const FormsContainer = () => {
 
-  const { formValues, formValues2, setError, error } = useContext(GlobalContext);
+  const { formValues, formValues2, setError, error, setData, setChangeComponent, setShowButton } = useContext(GlobalContext);
   
   const { name: firstName, dateOfBirth: firstDateOfBirth } = formValues;
   const { name: secondName, dateOfBirth: secondDateOfBirth } = formValues2;
@@ -105,7 +113,9 @@ export const FormsContainer = () => {
       msgError: ''
     });
 
-    console.log(getData(firstDateOfBirth, secondDateOfBirth));
+    setData(getData(firstDateOfBirth, secondDateOfBirth, firstName, secondName));
+    setChangeComponent(false);
+    setShowButton(true);
     
   }
 
@@ -113,8 +123,10 @@ export const FormsContainer = () => {
 
   return (
     <>
-      <Forms>
-        {stateError && <ErrorWarning><p>{msgError}</p></ErrorWarning>}
+      <Forms
+        className='animate__animated animate__fadeIn'
+      >
+        {stateError && <ErrorWarning className='animate__animated animate__fadeInDown'><p>{msgError}</p></ErrorWarning>}
         <FirstForm/>
         <SecondForm/>
         <Button

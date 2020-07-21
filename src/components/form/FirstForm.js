@@ -45,7 +45,13 @@ const Form = styled.form`
       }
     }
 
+    
   }
+
+  @media (max-width:750px) {
+    grid-column: 1 / 5;
+  }
+
 `;
 
 export const FirstForm = () => {

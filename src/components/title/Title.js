@@ -16,6 +16,18 @@ const Contain = styled.div`
     font-family: 'Rowdies', cursive;
     font-weight: 200;
   }
+
+  @media (max-width:750px) {
+
+    width: 95%;
+
+    h1 {
+      font-family: 'Rowdies', cursive;
+      font-weight: 200;
+      font-size: 18px;
+      width: 95%;
+    }
+  }
   
 `;
 
@@ -23,7 +35,7 @@ const Contain = styled.div`
 export const Title = () => {
   return (
     <Contain>
-      <h1>Datos curiosos sobre tu fecha de nacimiento</h1>
+      <h1>Datos curiosos sobre fechas de nacimiento</h1>
     </Contain>
   )
 }

@@ -6,36 +6,40 @@ import styled from 'styled-components';
 import { GlobalContext } from '../src/context/GlobalContext'
 import { useForm, useForm2 } from './hooks/useForm';
 
-const Button = styled.button`
-  width: 10%;
-  grid-column: 1 / 7;
-  justify-self: center;
+const ContainButton = styled.div`
 
-  color: #36382e;
-  cursor: pointer;
-  font-size:16px;
-  font-weight: 400;
-  line-height: 45px;
-  margin: 0 0 2em;
-  max-width: 160px; 
-  position: relative;
-  text-decoration: none;
-  text-transform: uppercase;
   width: 100%;
-  border: 0 solid;
-  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
-  outline: 1px solid;
-  outline-color: rgba(255, 255, 255, .5);
-  outline-offset: 0px;
-  text-shadow: none;
-  transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 
-  &:hover {
-  border: 1px solid;
-  box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
-  outline-color: rgba(255, 255, 255, 0);
-  outline-offset: 15px;
-  text-shadow: 1px 1px 2px #427388; 
+  button {
+    width: auto;
+    padding: 0 10px 0 10px;
+    color: #36382e;
+    cursor: pointer;
+    font-size:16px;
+    font-weight: 400;
+    line-height: 45px;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 0 solid;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+    outline: 1px solid;
+    outline-color: rgba(255, 255, 255, .5);
+    outline-offset: 0px;
+    text-shadow: none;
+    transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+
+    &:hover {
+    border: 1px solid;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
+    outline-color: #F06449;
+    outline-offset: 15px;
+    text-shadow: 1px 1px 2px #427388;
+  }
+
 } 
 `;
 
@@ -46,6 +50,10 @@ export const App = () => {
     name: 'pablo',
     dateOfBirth : '1992-07-13',
   }
+  // const initialState = {
+  //   name: 'lucero',
+  //   dateOfBirth : '1996-01-12',
+  // }
 
   const initialState2 = {
     name: 'lucero',
@@ -60,6 +68,12 @@ export const App = () => {
     error: false,
     msgError: ''
   });
+
+  const handleClick = () => {
+    console.log('click');
+    setChangeComponent(true);
+    setShowButton(false);
+  }
 
 
 
@@ -93,9 +107,11 @@ export const App = () => {
 
       {
         showButton &&
-          <Button>
-            Regresar
-          </Button>
+          <ContainButton>
+          <button
+            onClick={handleClick}
+          >Regresar</button>
+          </ContainButton>
       }
     </GlobalContext.Provider>
   )
